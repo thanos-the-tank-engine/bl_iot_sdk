@@ -50,6 +50,7 @@
 #include <fdt.h>
 #include <libfdt.h>
 #include <blog.h>
+#include "bl_gpio.h"
 #include "demo.h"
 
 extern uint8_t _heap_start;
@@ -253,7 +254,13 @@ static void system_init(void)
 
 static void system_thread_init()
 {
-    /*nothing here*/
+    bl_gpio_enable_output(11, 1, 0);
+    bl_gpio_enable_output(17, 1, 0);
+    bl_gpio_enable_output(14, 1, 0);
+    bl_gpio_output_set(11, 1);
+    bl_gpio_output_set(17, 1);
+    bl_gpio_output_set(14, 1);
+
 }
 
 void bfl_main()
